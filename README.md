@@ -7,7 +7,7 @@ You can view the demo here:
 
 ## Take aways
 1. Create a scroll trigger landing page in Angular
-2. Using GSAP animation the "Angular way"
+2. Using GSAP animation the "Angular way" [GSAP Angular Patterns](https://medium.com/@philipf5/patterns-for-using-greensock-in-angular-9ec5edf713fb)
 3. Connect a project to a headless CMS [directus](https://directus.io/)
 4. Dynamically injecting content from a rest api
 5. Presenting Design Tokens key values
