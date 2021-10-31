@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/core';
+import {ChangeDetectionStrategy, Component, ElementRef, HostBinding, Input, OnInit, Renderer2} from '@angular/core';
 
 @Component({
   selector: 'c-demo-card',
@@ -8,7 +8,12 @@ import {ChangeDetectionStrategy, Component, HostBinding, OnInit} from '@angular/
 })
 export class DemoCardComponent implements OnInit {
   @HostBinding('class') class = 'c-demo-card';
-  constructor() {}
+  @Input() devErrors: boolean = false;
+  constructor(private element: ElementRef, private render: Renderer2) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    if (this.devErrors) {
+      this.render.addClass(this.element.nativeElement, 'dev-errors');
+    }
+  }
 }

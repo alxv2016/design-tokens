@@ -122,7 +122,7 @@
 
 .demo-program-subtitle {
   font-size: $large--title;
-  font-weight: font-weight('regular');
+  font-weight: font-weight('light');
   line-height: 1.125;
 }
 
@@ -163,7 +163,7 @@
 }
 
 .demo-program-activity {
-  font-size: $subtitle--2;
+  font-size: $title--2;
   font-weight: font-weight('bold');
   color: color('dark');
   line-height: $heading-line-height;
@@ -206,5 +206,38 @@
   &:hover::after,
   &:active::after {
     opacity: 1;
+  }
+}
+:host(.dev-errors.c-demo-card) {
+  .c-demo-card__content {
+    padding: $spacing--lg;
+  }
+  .demo-program-info {
+    span ~ span {
+      margin-left: $spacing--lg;
+    }
+  }
+  .demo-program-btn {
+    border-radius: 0;
+    font-size: $body--1;
+    height: 38px;
+    @include elevate-1(color('dark'), 0.25);
+  }
+  .c-demo-card__footer {
+    padding-top: $spacing--2xl;
+    padding-bottom: $spacing--lg;
+  }
+  .demo-program-subtitle {
+    font-size: $title--2;
+    font-weight: font-weight('light');
+    line-height: 1.125;
+    margin-bottom: $spacing--xl;
+  }
+  .demo-program-title {
+    margin-left: $spacing--md;
+    font-weight: font-weight('medium');
+    background: color('light');
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
   }
 }
