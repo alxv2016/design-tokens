@@ -53,3 +53,17 @@ textarea {
   -webkit-appearance: none;
   border: 0;
 }
+
+button {
+  cursor: pointer;
+  border: none;
+  user-select: none;
+  min-width: 0;
+  background-color: inherit;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  &::-moz-focus-inner {
+    border: 0;
+  }
+}
