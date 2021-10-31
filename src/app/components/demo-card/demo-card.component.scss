@@ -24,8 +24,11 @@
     z-index: 1;
     width: 100%;
     height: 100%;
-    padding: $spacing--xl;
+    padding: $spacing--lg;
     overflow: hidden;
+    @include breakpoint('sm') {
+      padding: $spacing--xl;
+    }
   }
   &__cover-overlay {
     position: absolute;
@@ -92,23 +95,16 @@
     width: 100%;
     flex-shrink: 0;
     background-color: color('light');
-    padding: $spacing--xl;
+    padding: $spacing--lg;
+    @include breakpoint('sm') {
+      padding: $spacing--xl;
+    }
   }
 
   &__footer-content {
     position: relative;
     display: flex;
     flex-direction: column;
-  }
-}
-
-.program-info {
-  position: relative;
-  display: flex;
-  align-items: center;
-  margin-bottom: $spacing--sm;
-  span ~ span {
-    margin-left: $spacing--sm;
   }
 }
 
@@ -121,26 +117,33 @@
 }
 
 .demo-program-subtitle {
-  font-size: $large--title;
+  font-size: $title--2;
   font-weight: font-weight('light');
   line-height: 1.125;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.75));
+  @include breakpoint('sm') {
+    font-size: $large--title;
+  }
 }
 
 .demo-program-title {
-  font-size: $headliner--3 * 1.5;
+  font-size: $headliner--3 * 1.3;
   font-weight: font-weight('bold');
   line-height: 1;
   background: color('light');
   background: linear-gradient(0deg, color('carbon') 0%, color('light') 60%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  @include breakpoint('sm') {
+    font-size: $headliner--3 * 1.5;
+  }
 }
 
 .demo-program-info {
   position: relative;
   display: flex;
   align-items: center;
-  margin-bottom: $spacing--sm;
+  margin-bottom: $spacing--2xs;
   span ~ span {
     margin-left: $spacing--sm;
   }
@@ -179,7 +182,7 @@
   background-color: color('lit');
   padding: 0 $spacing--md;
   border-radius: $spacing--xs;
-  font-weight: font-weight('medium');
+  font-weight: font-weight('bold');
   font-size: $body--2;
   white-space: no-wrap;
   user-select: none;
@@ -201,6 +204,7 @@
   &:hover,
   &:focus {
     outline: none;
+    background-color: color('litdark');
   }
   &:focus::after,
   &:hover::after,
