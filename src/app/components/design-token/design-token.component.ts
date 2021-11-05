@@ -19,7 +19,7 @@ import {gsap} from 'gsap';
   styleUrls: ['./design-token.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class DesignTokenComponent implements OnInit, AfterViewInit {
+export class DesignTokenComponent implements AfterViewInit {
   @HostBinding('class') class = 'c-design-token';
   @ViewChild('tokenSheen') tokenSheen!: ElementRef;
   @ViewChild('lensGlare') lensGlare!: ElementRef;
@@ -29,9 +29,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
   @ViewChildren('lensFlare', {read: ElementRef}) lensFlare!: QueryList<ElementRef>;
   constructor(private element: ElementRef, private render: Renderer2, private ngZone: NgZone) {}
 
-  ngOnInit(): void {}
-
-  ngAfterViewInit(): void {
+  private initGSAP(): void {
     const tokenGlitches = this.tokenGlitch.map((glitch) => glitch.nativeElement);
     const tokenRings = this.tokenRing.map((ring) => ring.nativeElement);
     const tokenCubes = this.tokenCube.map((stroke) => stroke.nativeElement);
@@ -39,7 +37,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
 
     const token = gsap.timeline({
       repeat: -1,
-      repeatDelay: 4,
+      repeatDelay: 5,
       yoyo: true,
       yoyoEase: 'back',
       defaults: {
@@ -101,5 +99,11 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
         },
         2.95
       );
+  }
+
+  ngAfterViewInit(): void {
+    this.ngZone.runOutsideAngular(() => {
+      this.initGSAP();
+    });
   }
 }
