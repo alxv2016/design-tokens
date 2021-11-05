@@ -38,7 +38,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
 
     const token = gsap.timeline({
       repeat: -1,
-      repeatDelay: 3,
+      repeatDelay: 4,
       yoyo: true,
       yoyoEase: 'back',
       defaults: {
@@ -50,6 +50,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
     token
       .from(tokenGlitches, {
         opacity: 0,
+        skewY: 3,
         scale: 0.95,
         stagger: 0.275,
         transformOrigin: 'center',
@@ -72,6 +73,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
       )
       .from(lensFlares, {
         ease: 'power3',
+        skewY: 25,
         scale: 0.125,
         opacity: 0,
         transformOrigin: 'center',
