@@ -22,8 +22,9 @@ import {gsap} from 'gsap';
 export class DesignTokenComponent implements OnInit, AfterViewInit {
   @HostBinding('class') class = 'c-design-token';
   @ViewChild('tokenSheen') tokenSheen!: ElementRef;
+  @ViewChild('lensGlare') lensGlare!: ElementRef;
   @ViewChildren('tokenRing', {read: ElementRef}) tokenRing!: QueryList<ElementRef>;
-  @ViewChildren('tokenCubeStroke', {read: ElementRef}) tokenCubeStroke!: QueryList<ElementRef>;
+  @ViewChildren('tokenCube', {read: ElementRef}) tokenCube!: QueryList<ElementRef>;
   @ViewChildren('tokenGlitch', {read: ElementRef}) tokenGlitch!: QueryList<ElementRef>;
   @ViewChildren('lensFlare', {read: ElementRef}) lensFlare!: QueryList<ElementRef>;
   constructor(private element: ElementRef, private render: Renderer2, private ngZone: NgZone) {}
@@ -33,7 +34,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
   ngAfterViewInit(): void {
     const tokenGlitches = this.tokenGlitch.map((glitch) => glitch.nativeElement);
     const tokenRings = this.tokenRing.map((ring) => ring.nativeElement);
-    const tokenCubeStrokes = this.tokenCubeStroke.map((stroke) => stroke.nativeElement);
+    const tokenCubes = this.tokenCube.map((stroke) => stroke.nativeElement);
     const lensFlares = this.lensFlare.map((flare) => flare.nativeElement);
 
     const token = gsap.timeline({
@@ -62,7 +63,7 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
         ease: 'bounce',
       })
       .from(
-        tokenCubeStrokes,
+        tokenCubes,
         {
           strokeDasharray: 400,
           strokeDashoffset: 400,
@@ -73,7 +74,6 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
       )
       .from(lensFlares, {
         ease: 'power3',
-        skewY: 25,
         scale: 0.125,
         opacity: 0,
         transformOrigin: 'center',
@@ -82,6 +82,24 @@ export class DesignTokenComponent implements OnInit, AfterViewInit {
         rotate: -25,
         opacity: 0,
         transformOrigin: 'center',
-      });
+      })
+      .from(
+        this.lensGlare.nativeElement,
+        {
+          rotate: -45,
+          opacity: 0,
+          transformOrigin: 'center',
+        },
+        6
+      )
+      .to(
+        tokenGlitches,
+        {
+          scale: 1.035,
+          stagger: 0.275,
+          transformOrigin: 'center',
+        },
+        2.95
+      );
   }
 }
