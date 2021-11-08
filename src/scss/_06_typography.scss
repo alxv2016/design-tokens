@@ -140,12 +140,19 @@ form legend {
   @include breakpoint(md) {
     font-size: $subtitle--2;
   }
+
+  &--mono {
+    font-family: font-family('mono');
+  }
 }
 
 .small-print {
   font-size: $body--1;
   @include breakpoint(md) {
     font-size: $subtitle;
+  }
+  &--mono {
+    font-family: font-family('mono');
   }
 }
 

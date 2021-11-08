@@ -3,15 +3,16 @@
 :host-context(.c-design-token) {
   position: relative;
   display: block;
-  width: 280px;
-  height: 280px;
-  @include breakpoint(sm) {
-    width: 320px;
-    height: 320px;
+  flex-shrink: 0;
+  width: 268px;
+  height: 268px;
+  @include breakpoint(xs) {
+    width: 298px;
+    height: 298px;
   }
   @include breakpoint(lg) {
-    width: 440px;
-    height: 440px;
+    width: 345px;
+    height: 345px;
   }
 }
 
@@ -41,38 +42,50 @@
   bottom: 0;
   left: 0;
   z-index: 2;
-  height: 90px;
-  width: 90px;
+  height: 36px;
+  width: 36px;
   border-radius: 100%;
   background-color: rgba(#cbffa3, 0.25);
-  opacity: 0.145;
+  opacity: 1;
+  opacity: 0.245;
   box-shadow: inset 0px 0px 14px 12px rgba(11, 255, 167, 1);
+  @include breakpoint(md) {
+    height: 48px;
+    width: 48px;
+  }
   &--2 {
-    top: 140px;
-    right: 20px;
+    top: 68px;
+    right: 66px;
     left: auto;
-    transform: translate(-60%, -40%);
-    height: 120px;
-    width: 120px;
+    height: 72px;
+    width: 72px;
     background-color: rgba(#d6a3ff, 0.25);
     box-shadow: inset 0px 0px 14px 12px rgb(145, 11, 255);
+    @include breakpoint(md) {
+      height: 104px;
+      width: 104px;
+    }
   }
   &--3 {
     top: -20px;
     right: -20px;
     left: auto;
-    height: 180px;
-    width: 180px;
+    height: 116px;
+    width: 116px;
     background-color: rgba(#a3daff, 0.25);
     box-shadow: inset 0px 0px 14px 12px rgb(11, 166, 255);
+    @include breakpoint(md) {
+      height: 164px;
+      width: 164px;
+    }
   }
 }
 
 .design-token-glow {
   position: absolute;
   z-index: -1;
-  height: 60%;
-  width: 60%;
+  height: 55%;
+  width: 55%;
   border-radius: 100%;
   box-shadow: 0px 0px 100px 8px rgba(106, 94, 255, 0.45);
   @include breakpoint(sm) {
