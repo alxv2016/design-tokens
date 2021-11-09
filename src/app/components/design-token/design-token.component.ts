@@ -4,7 +4,9 @@ import {
   Component,
   ElementRef,
   HostBinding,
+  Input,
   NgZone,
+  OnDestroy,
   OnInit,
   QueryList,
   Renderer2,
@@ -12,6 +14,7 @@ import {
   ViewChildren,
 } from '@angular/core';
 import {gsap} from 'gsap';
+import {Observable} from 'rxjs';
 
 @Component({
   selector: 'c-design-token',
@@ -20,6 +23,8 @@ import {gsap} from 'gsap';
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
 export class DesignTokenComponent implements AfterViewInit {
+  token!: GSAPTimeline;
+  @Input() heroEvents!: Observable<boolean>;
   @HostBinding('class') class = 'c-design-token';
   @ViewChild('tokenSheen') tokenSheen!: ElementRef;
   @ViewChild('lensGlare') lensGlare!: ElementRef;
@@ -35,7 +40,7 @@ export class DesignTokenComponent implements AfterViewInit {
     const tokenCubes = this.tokenCube.map((stroke) => stroke.nativeElement);
     const lensFlares = this.lensFlare.map((flare) => flare.nativeElement);
 
-    const token = gsap.timeline({
+    this.token = gsap.timeline({
       repeat: -1,
       repeatDelay: 5,
       yoyo: true,
@@ -46,7 +51,7 @@ export class DesignTokenComponent implements AfterViewInit {
       },
     });
 
-    token
+    this.token
       .from(tokenGlitches, {
         opacity: 0,
         skewY: 3,
@@ -104,6 +109,10 @@ export class DesignTokenComponent implements AfterViewInit {
   ngAfterViewInit(): void {
     this.ngZone.runOutsideAngular(() => {
       this.initGSAP();
+    });
+
+    this.heroEvents.subscribe((bool) => {
+      bool ? this.token.play() : this.token.pause();
     });
   }
 }
