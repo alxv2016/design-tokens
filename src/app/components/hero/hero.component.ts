@@ -53,19 +53,12 @@ export class HeroComponent implements OnInit, AfterViewInit {
     });
 
     heroTL
-      .fromTo(
-        titles,
-        {
-          yPercent: 0,
-          textShadow: '0px 0px 0px rgba(0,70,249,1), 0px 0px 0px rgba(255,0,0,1)',
-        },
-        {
-          yPercent: -40,
-          textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
-          duration: 4.75,
-          stagger: 0.175,
-        }
-      )
+      .to(titles, {
+        textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
+        duration: 4.75,
+        stagger: 0.45,
+        skewX: -16,
+      })
       .to(
         this.element.nativeElement,
         {

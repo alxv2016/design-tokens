@@ -1,11 +1,12 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, HostBinding, OnInit} from '@angular/core';
 
 @Component({
-  selector: 'app-intro',
+  selector: 's-intro',
   templateUrl: './intro.component.html',
   styleUrls: ['./intro.component.scss'],
 })
 export class IntroComponent implements OnInit {
+  @HostBinding('class') class = 's-intro';
   constructor() {}
 
   ngOnInit(): void {}

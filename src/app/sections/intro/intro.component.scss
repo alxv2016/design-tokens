@@ -1,0 +1,45 @@
+@import '../../../scss/00_imports';
+
+:host-context(.s-intro) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+}
+
+.s-intro {
+  &__container {
+    position: relative;
+    display: block;
+    @include container-padding;
+    padding-top: $layout--lg !important;
+    padding-bottom: $layout--lg !important;
+  }
+  &__cards {
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-rows: repeat(2, minmax(1fr, auto));
+    grid-gap: $spacing--xl;
+    justify-content: center;
+    @include breakpoint(sm) {
+      align-items: start;
+    }
+
+    @include breakpoint(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .c-token-card {
+      max-width: 280px;
+      @include breakpoint(sm) {
+        max-width: none;
+      }
+    }
+
+    .c-token-card--1 {
+      @include breakpoint(sm) {
+        grid-column: 1 / -3;
+      }
+    }
+  }
+}
