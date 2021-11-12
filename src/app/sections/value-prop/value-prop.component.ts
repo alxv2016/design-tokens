@@ -42,35 +42,86 @@ export class ValuePropComponent implements AfterViewInit {
     const tokenRings = this.tokenRing.map((ring) => ring.nativeElement);
     const tokenPens = this.tokenPen.map((pen) => pen.nativeElement);
 
+    ScrollTrigger.create({
+      markers: false,
+      trigger: this.vortexContainer.nativeElement,
+      start: 'top top',
+      end: 'bottom top',
+      scrub: 0.45,
+      pin: true,
+      anticipatePin: 1,
+      pinSpacing: true,
+    });
+
+    const tokenTL = gsap.timeline({
+      defaults: {
+        duration: 4,
+      },
+      scrollTrigger: {
+        markers: true,
+        trigger: this.vortex.nativeElement,
+        start: 'top top',
+        end: 'bottom top',
+        scrub: 0.75,
+      },
+    });
+
+    tokenTL
+      .from(tokenGlitches, {
+        opacity: 0,
+        skewY: 3,
+        scale: 1.0175,
+        stagger: 0.75,
+        transformOrigin: 'center',
+      })
+      .from(tokenRings, {
+        strokeWidth: 1.25,
+        opacity: 0,
+        stagger: 0.275,
+        ease: 'bounce',
+      })
+      .from(
+        tokenPens,
+        {
+          //strokeDasharray: 800,
+          //strokeDashoffset: 20,
+          strokeWidth: 0.75,
+          stagger: 0.45,
+          opacity: 0,
+        },
+        2.95
+      )
+      .from(this.tokenSheen.nativeElement, {
+        rotate: -25,
+        opacity: 0,
+        transformOrigin: 'center',
+      });
+
     const introTL = gsap.timeline({
       defaults: {
-        ease: 'back',
-        duration: 10,
+        duration: 6,
       },
       scrollTrigger: {
         markers: false,
-        trigger: this.vortexContainer.nativeElement,
-        start: 'top top',
-        end: 'bottom top',
+        trigger: this.element.nativeElement,
+        start: '-28% top',
+        end: '70% top',
         scrub: 0.45,
-        pin: true,
-        anticipatePin: 1,
-        pinSpacing: true,
       },
     });
 
     introTL
       .from(rings, {
         opacity: 0,
-        rotate: -360,
-        // duration: 4.75,
-        stagger: 0.45,
+        rotate: -720,
+        stagger: 1.25,
         transformOrigin: 'center',
+        ease: 'back',
       })
       .from(
         this.vortex.nativeElement,
         {
-          scale: 1.45,
+          scale: 1.25,
         },
         0
       )
@@ -81,55 +132,49 @@ export class ValuePropComponent implements AfterViewInit {
       .from(
         titles,
         {
-          yPercent: 75,
+          yPercent: 45,
           textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
           skewX: -16,
-          duration: 6,
           stagger: 2,
           opacity: 0,
         },
         0
-      )
-      .from(
-        tokenGlitches,
-        {
-          opacity: 0,
-          skewY: 3,
-          scale: 1.0175,
-          stagger: 0.75,
-          transformOrigin: 'center',
-        },
-        7
-      )
-      .from(
-        tokenRings,
-        {
-          strokeWidth: 1.25,
-          opacity: 0,
-          stagger: 0.275,
-          ease: 'bounce',
-        },
-        8
-      )
-      .from(
-        tokenPens,
-        {
-          strokeDasharray: 400,
-          strokeDashoffset: 400,
-          opacity: 0,
-          stagger: 0.275,
-        },
-        9
-      )
-      .from(
-        this.tokenSheen.nativeElement,
-        {
-          rotate: -25,
-          opacity: 0,
-          transformOrigin: 'center',
-        },
-        10
       );
+    // .from(
+    //   tokenGlitches,
+    //   {
+    //     opacity: 0,
+    //     skewY: 3,
+    //     scale: 1.0175,
+    //     stagger: 0.75,
+    //     transformOrigin: 'center',
+    //   }, 1
+    // )
+    // .from(
+    //   tokenRings,
+    //   {
+    //     strokeWidth: 1.25,
+    //     opacity: 0,
+    //     stagger: 0.275,
+    //     ease: 'bounce',
+    //   }, 2
+    // )
+    // .from(
+    //   tokenPens,
+    //   {
+    //     strokeDasharray: 400,
+    //     strokeDashoffset: 400,
+    //     opacity: 0,
+    //   }, 3
+    // )
+    // .from(
+    //   this.tokenSheen.nativeElement,
+    //   {
+    //     rotate: -25,
+    //     opacity: 0,
+    //     transformOrigin: 'center',
+    //   },
+    // );
     // .to(
     //   this.element.nativeElement,
     //   {

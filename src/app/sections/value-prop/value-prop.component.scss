@@ -12,6 +12,7 @@
   &__container {
     position: relative;
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -23,17 +24,22 @@
 .s-value-prop-vortex {
   position: relative;
   display: flex;
+  width: 100%;
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  z-index: -1;
+  padding: $layout--xl 0;
 
   .display-4 {
-    margin-top: $layout--xl;
+    position: relative;
+    z-index: 2;
+    top: -25%;
   }
 
   &__container {
     position: relative;
+    width: 100%;
+    z-index: -1;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,9 +47,11 @@
 }
 
 .c-vortex {
+  position: relative;
   flex-shrink: 0;
   width: 768px;
   height: 768px;
+  z-index: 6;
 }
 
 .c-designer-token {
@@ -55,7 +63,8 @@
 
 .scroll-text {
   position: absolute;
-  top: 20%;
+  z-index: 1;
+  top: 5%;
   @include container-padding;
   h2 ~ h2 {
     margin-top: $layout--lg;
