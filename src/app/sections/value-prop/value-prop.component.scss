@@ -1,0 +1,63 @@
+@import '../../../scss/00_imports';
+
+:host-context(.s-value-prop) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  --a-start: 0%;
+  --a-end: 0%;
+}
+
+.s-value-prop {
+  &__container {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    @include container-padding;
+    //border: 1px solid red;
+  }
+}
+
+.s-value-prop-vortex {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  z-index: -1;
+
+  .display-4 {
+    margin-top: $layout--xl;
+  }
+
+  &__container {
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.c-vortex {
+  flex-shrink: 0;
+  width: 768px;
+  height: 768px;
+}
+
+.c-designer-token {
+  position: absolute;
+  flex-shrink: 0;
+  width: 240px;
+  height: 240px;
+}
+
+.scroll-text {
+  position: absolute;
+  top: 20%;
+  @include container-padding;
+  h2 ~ h2 {
+    margin-top: $layout--lg;
+  }
+}
