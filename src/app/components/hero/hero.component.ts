@@ -56,8 +56,9 @@ export class HeroComponent implements OnInit, AfterViewInit {
       .to(titles, {
         textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
         duration: 4.75,
-        stagger: 0.45,
-        skewX: -16,
+        stagger: 0.75,
+        transformOrigin: 'left center',
+        //skewX: -16,
       })
       .to(
         this.element.nativeElement,

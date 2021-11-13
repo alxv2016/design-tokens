@@ -58,7 +58,7 @@ export class ValuePropComponent implements AfterViewInit {
         duration: 4,
       },
       scrollTrigger: {
-        markers: true,
+        markers: false,
         trigger: this.vortex.nativeElement,
         start: 'top top',
         end: 'bottom top',
@@ -83,8 +83,6 @@ export class ValuePropComponent implements AfterViewInit {
       .from(
         tokenPens,
         {
-          //strokeDasharray: 800,
-          //strokeDashoffset: 20,
           strokeWidth: 0.75,
           stagger: 0.45,
           opacity: 0,
@@ -99,7 +97,7 @@ export class ValuePropComponent implements AfterViewInit {
 
     const introTL = gsap.timeline({
       defaults: {
-        duration: 6,
+        duration: 4,
       },
       scrollTrigger: {
         markers: false,
@@ -111,79 +109,46 @@ export class ValuePropComponent implements AfterViewInit {
     });
 
     introTL
-      .from(rings, {
+      .from(titles, {
+        yPercent: 65,
+        textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
+        stagger: 1.75,
         opacity: 0,
-        rotate: -720,
-        stagger: 1.25,
-        transformOrigin: 'center',
-        ease: 'back',
+        transformOrigin: 'left center',
       })
       .from(
         this.vortex.nativeElement,
         {
-          scale: 1.25,
+          scale: 1.35,
         },
-        0
+        2.45
       )
-      .from(this.vortexHeading.nativeElement, {
-        yPercent: 45,
-        opacity: 0,
+      .from(
+        rings,
+        {
+          opacity: 0,
+          rotate: -720,
+          stagger: 1.75,
+          duration: 8,
+          transformOrigin: 'center',
+          ease: 'back',
+        },
+        2.45
+      )
+      .to(this.element.nativeElement, {
+        '--a-start': '20%',
+        '--a-end': '120%',
+        duration: 6,
       })
       .from(
-        titles,
+        this.vortexHeading.nativeElement,
         {
-          yPercent: 45,
           textShadow: '4px 0px 0px rgba(0,70,249,1), -4px 0px 0px rgba(255,0,0,1)',
-          skewX: -16,
-          stagger: 2,
+          yPercent: 75,
           opacity: 0,
         },
-        0
+        6
       );
-    // .from(
-    //   tokenGlitches,
-    //   {
-    //     opacity: 0,
-    //     skewY: 3,
-    //     scale: 1.0175,
-    //     stagger: 0.75,
-    //     transformOrigin: 'center',
-    //   }, 1
-    // )
-    // .from(
-    //   tokenRings,
-    //   {
-    //     strokeWidth: 1.25,
-    //     opacity: 0,
-    //     stagger: 0.275,
-    //     ease: 'bounce',
-    //   }, 2
-    // )
-    // .from(
-    //   tokenPens,
-    //   {
-    //     strokeDasharray: 400,
-    //     strokeDashoffset: 400,
-    //     opacity: 0,
-    //   }, 3
-    // )
-    // .from(
-    //   this.tokenSheen.nativeElement,
-    //   {
-    //     rotate: -25,
-    //     opacity: 0,
-    //     transformOrigin: 'center',
-    //   },
-    // );
-    // .to(
-    //   this.element.nativeElement,
-    //   {
-    //     '--a-start': '60%',
-    //     '--a-end': '200%',
-    //     duration: 6,
-    //   },
-    //   0
-    // );
     // Set a delay after 1 second to refresh scrollTrigger instance
     gsap.delayedCall(1, () => {
       ScrollTrigger.refresh();
@@ -191,7 +156,7 @@ export class ValuePropComponent implements AfterViewInit {
   }
 
   ngAfterViewInit(): void {
-    //this.render.addClass(this.element.nativeElement, 'l-content--hide');
+    this.render.addClass(this.vortexContainer.nativeElement, 'l-content--hide');
     this.ngZone.runOutsideAngular(() => {
       this.initGsap();
     });

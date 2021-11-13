@@ -4,42 +4,173 @@
   position: relative;
   display: block;
   overflow: hidden;
+  --a-start: 0%;
+  --a-end: 0%;
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(345deg, rgba(color('darker'), 1) var(--a-start), rgba(color('darker'), 0) var(--a-end));
+    will-change: transform;
+  }
+}
+
+.tech-token {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 345px;
+  height: 345px;
+  flex-shrink: 0;
+  order: 1;
+  @include breakpoint(md) {
+    width: 480px;
+    height: 480px;
+    order: 2;
+  }
+  svg {
+    height: 100%;
+    width: 100%;
+  }
 }
 
 .s-intro {
+  &__content {
+    position: relative;
+    flex-shrink: 0;
+    width: 100%;
+    order: 2;
+    @include breakpoint(md) {
+      order: 1;
+      width: 60%;
+    }
+  }
   &__container {
     position: relative;
-    display: block;
     @include container-padding;
     padding-top: $layout--lg !important;
     padding-bottom: $layout--lg !important;
-  }
-  &__cards {
-    position: relative;
     width: 100%;
-    display: grid;
-    grid-template-rows: repeat(2, minmax(1fr, auto));
-    grid-gap: $spacing--xl;
-    justify-content: center;
-    @include breakpoint(sm) {
-      align-items: start;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    // display: grid;
+    // grid-template-rows: repeat(2, minmax(1fr, auto));
+    // grid-gap: $spacing--xl;
+    // align-items: center;
+    @include breakpoint(md) {
+      flex-direction: row;
+      // grid-template-columns: repeat(2, 1fr);
     }
+  }
 
-    @include breakpoint(lg) {
-      grid-template-columns: repeat(3, 1fr);
-    }
+  // &__content {
+  //   position: relative;
+  //   width: 100%;
+  //   display: grid;
+  //   grid-template-rows: repeat(2, minmax(1fr, auto));
+  //   grid-gap: $spacing--xl;
+  //   @include breakpoint(md) {
+  //     grid-template-columns: repeat(2, 1fr);
+  //   }
+  // }
 
-    .c-token-card {
-      max-width: 280px;
-      @include breakpoint(sm) {
-        max-width: none;
-      }
-    }
+  // &__cards {
+  //   position: relative;
+  //   width: 100%;
+  //   display: grid;
+  //   grid-template-rows: repeat(2, minmax(1fr, auto));
+  //   grid-gap: $spacing--xl;
+  //   justify-content: center;
+  //   @include breakpoint(sm) {
+  //     align-items: start;
+  //   }
 
-    .c-token-card--1 {
-      @include breakpoint(sm) {
-        grid-column: 1 / -3;
-      }
+  //   @include breakpoint(lg) {
+  //     grid-template-columns: repeat(3, 1fr);
+  //   }
+
+  //   .c-token-card {
+  //     max-width: 280px;
+  //     @include breakpoint(sm) {
+  //       max-width: none;
+  //     }
+  //   }
+
+  //   .c-token-card--1 {
+  //     @include breakpoint(sm) {
+  //       grid-column: 1 / -3;
+  //     }
+  //   }
+  // }
+}
+
+.design-token-lensflares {
+  position: absolute;
+  z-index: 1;
+  pointer-events: none;
+  height: 90%;
+  width: 90%;
+  border-radius: 100%;
+}
+
+.design-token-lensflare {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  z-index: 2;
+  height: 36px;
+  width: 36px;
+  border-radius: 100%;
+  background-color: rgba(#cbffa3, 0.25);
+  opacity: 0.245;
+  box-shadow: inset 0px 0px 14px 12px rgba(11, 255, 167, 1);
+  @include breakpoint(md) {
+    height: 48px;
+    width: 48px;
+  }
+  &--2 {
+    top: 68px;
+    right: 66px;
+    left: auto;
+    height: 72px;
+    width: 72px;
+    background-color: rgba(#d6a3ff, 0.25);
+    box-shadow: inset 0px 0px 14px 12px rgb(145, 11, 255);
+    @include breakpoint(md) {
+      height: 104px;
+      width: 104px;
     }
+  }
+  &--3 {
+    top: -20px;
+    right: -20px;
+    left: auto;
+    height: 116px;
+    width: 116px;
+    background-color: rgba(#a3daff, 0.25);
+    box-shadow: inset 0px 0px 14px 12px rgb(11, 166, 255);
+    @include breakpoint(md) {
+      height: 164px;
+      width: 164px;
+    }
+  }
+}
+
+.design-token-glow {
+  position: absolute;
+  z-index: -1;
+  height: 80%;
+  width: 80%;
+  border-radius: 100%;
+  box-shadow: 0px 0px 150px 8px rgba(106, 94, 255, 0.45);
+  @include breakpoint(sm) {
+    height: 70%;
+    width: 70%;
   }
 }

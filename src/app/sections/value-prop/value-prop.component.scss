@@ -16,8 +16,6 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    @include container-padding;
-    //border: 1px solid red;
   }
 }
 
@@ -28,12 +26,19 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  padding: $layout--xl 0;
+  padding-top: $layout--xl;
+  @include breakpoint(md) {
+    padding-top: $layout--2xl;
+  }
 
-  .display-4 {
+  .display-3 {
     position: relative;
     z-index: 2;
-    top: -25%;
+    top: -20%;
+    @include container-padding;
+    @include breakpoint(md) {
+      top: -25%;
+    }
   }
 
   &__container {
@@ -43,30 +48,71 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    &::after {
+      position: absolute;
+      content: '';
+      top: 0;
+      left: 0;
+      z-index: 2;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(
+        355deg,
+        rgba(color('darker'), 1) var(--a-start),
+        rgba(color('darker'), 0) var(--a-end)
+      );
+      will-change: transform;
+    }
   }
 }
 
 .c-vortex {
   position: relative;
+  z-index: -1;
   flex-shrink: 0;
-  width: 768px;
-  height: 768px;
-  z-index: 6;
+  width: 568px;
+  height: 568px;
+  @include breakpoint(md) {
+    width: 768px;
+    height: 768px;
+  }
 }
 
 .c-designer-token {
   position: absolute;
   flex-shrink: 0;
-  width: 240px;
-  height: 240px;
+  width: 180px;
+  height: 180px;
+  @include breakpoint(md) {
+    width: 240px;
+    height: 240px;
+  }
 }
 
 .scroll-text {
   position: absolute;
   z-index: 1;
-  top: 5%;
+  width: 100%;
   @include container-padding;
+  top: 0;
   h2 ~ h2 {
     margin-top: $layout--lg;
+  }
+  @include breakpoint(md) {
+    top: 10%;
+  }
+}
+
+.l-content-hide {
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(355deg, rgba(color('darker'), 1) var(--a-start), rgba(color('darker'), 0) var(--a-end));
+    will-change: transform;
   }
 }
