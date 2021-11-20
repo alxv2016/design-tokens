@@ -1,0 +1,160 @@
+@import '../../../scss/00_imports';
+
+:host-context(.s-tech-concepts) {
+  position: relative;
+  display: block;
+  overflow: hidden;
+  --a-start: 0%;
+  --a-end: 0%;
+  &::after {
+    position: absolute;
+    content: '';
+    top: 0;
+    left: 0;
+    z-index: 2;
+    height: 100%;
+    width: 100%;
+    background: linear-gradient(345deg, rgba(color('darker'), 1) var(--a-start), rgba(color('darker'), 0) var(--a-end));
+    will-change: transform;
+  }
+}
+
+.s-tech-concepts {
+  &__container {
+    position: relative;
+    width: 100%;
+    @include container-padding;
+    padding-top: $layout--lg !important;
+    padding-bottom: $layout--lg !important;
+    @include breakpoint(md) {
+      padding-top: $layout--xl !important;
+      padding-bottom: $layout--xl !important;
+    }
+  }
+}
+
+.s-tech-concept-1 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  min-height: 528px;
+  margin-top: $layout--2xl;
+  padding: $layout--lg;
+  background-color: #00323b;
+  border-radius: $spacing--lg;
+  overflow: hidden;
+  @include elevate-4(color('dark'), 0.125);
+
+  &__container {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+  }
+
+  &__content {
+    position: relative;
+    width: 55%;
+  }
+}
+
+.code-img {
+  position: absolute;
+  right: -50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 720px;
+  height: auto;
+  flex-shrink: 0;
+  overflow: hidden;
+  border-radius: $spacing--sm;
+  @include elevate-4(color('dark'), 0.25);
+  img {
+    position: relative;
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.s-tech-concept-2 {
+  position: relative;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  margin-top: $layout--2xl;
+  &__intro {
+    position: relative;
+  }
+  &__compile {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 800px;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+.s-tech-compile-demo {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  .s-tech-build-engine {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: $spacing--xl 0;
+  }
+
+  .s-tech-platforms {
+    position: relative;
+    .sub-headline ~ .sub-headline {
+      margin-top: $spacing--lg;
+    }
+  }
+}
+
+.s-tech-compile-vortex {
+  position: absolute;
+  display: flex;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+  align-items: center;
+  justify-content: center;
+}
+
+.c-vortex {
+  position: relative;
+  z-index: -1;
+  flex-shrink: 0;
+  width: 568px;
+  height: 568px;
+  @include breakpoint(md) {
+    width: 768px;
+    height: 768px;
+  }
+}
+
+.c-scroll-indicator {
+  position: relative;
+  width: 2px;
+  height: 64px;
+  pointer-events: none;
+  overflow: hidden;
+  &-bar {
+    position: relative;
+    display: block;
+    height: 100%;
+    width: 100%;
+    @include smooth-gradient-vert(#fcb421);
+  }
+}

@@ -65,6 +65,8 @@
     // align-items: center;
     @include breakpoint(md) {
       flex-direction: row;
+      padding-top: $layout--xl !important;
+      padding-bottom: $layout--xl !important;
       // grid-template-columns: repeat(2, 1fr);
     }
   }
@@ -165,12 +167,12 @@
 .design-token-glow {
   position: absolute;
   z-index: -1;
-  height: 80%;
-  width: 80%;
+  height: 70%;
+  width: 70%;
   border-radius: 100%;
-  box-shadow: 0px 0px 150px 8px rgba(106, 94, 255, 0.45);
-  @include breakpoint(sm) {
-    height: 70%;
-    width: 70%;
+  box-shadow: 0px 0px 98px 8px rgba(106, 94, 255, 0.45);
+  @include breakpoint(md) {
+    height: 80%;
+    width: 80%;
   }
 }
